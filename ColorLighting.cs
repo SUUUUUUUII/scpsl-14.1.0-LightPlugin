@@ -13,7 +13,6 @@ namespace FacilityColorLighting
     [CommandHandler(typeof(RemoteAdminCommandHandler))]
     public class ColorLighting : ICommand
     {
-        float R = 0; float G = 0; float B = 0;
 
         public facility.Facility facility = new facility.Facility();
 

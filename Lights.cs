@@ -11,7 +11,7 @@ namespace FacilityClrLoader
 {
     public class Lights : Plugin
     {
-        public override string Name => "FacilitColorLights";
+        public override string Name => "FacilityColorLights";
 
         public override string Description => "You can change light color foreach zone";
 

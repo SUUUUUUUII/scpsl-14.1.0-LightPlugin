@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using CommandSystem;
 using LabApi.Features.Wrappers;
 using MapGeneration;
@@ -16,19 +12,16 @@ namespace FacilityColorLighting
 
         public facility.Facility facility = new facility.Facility();
 
+        public Surface.SurfaceZone surfaceclr = new Surface.SurfaceZone();
+
         public LCZ.LightContainmentZone lightclr = new LCZ.LightContainmentZone();
 
         public HCZ.HeavyContainmentZone heavyclr = new HCZ.HeavyContainmentZone();
 
         public EZ.EntranceZone entranceclr = new EZ.EntranceZone();
-
-
         public string Command => "light";
-
         public string[] Aliases => new[] { "changelights" }; 
-
         public string Description => "Change light color <color=yellow> { Reset } { ZoneType } { Color }";
-
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
 
@@ -38,8 +31,6 @@ namespace FacilityColorLighting
                 response = "You have don't permission for use this command!";
 
             }
-
-
             if (arguments.Count == 0)
             {
 
@@ -48,16 +39,11 @@ namespace FacilityColorLighting
                 return false;
 
             }
-
             if (arguments.Count > 2)
             {
-
                 response = "Value can't more one";
-
                 return false;
-
             }
-
             //--FACILITY--
 
             if (arguments.At(0) == "red")
@@ -131,6 +117,80 @@ namespace FacilityColorLighting
 
             }
 
+            //--------------------------------------------------------------
+
+            //--SURFACE--
+
+            if (arguments.At(0) == "surface" && arguments.At(1) == "red")
+            {
+
+                response = $"Change surface zone color on <color=red> Red!";
+
+                surfaceclr.SRed();
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "blue")
+            {
+
+                response = $"Change surface zone color on <color=blue> Blue!";
+
+                surfaceclr.SBlue();
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "green")
+            {
+
+                response = $"Change surface zone color on <color=green> Green!";
+
+                surfaceclr.SGreen();
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "black")
+            {
+
+                response = $"Change surface zone color on <color=black> Black!";
+
+                surfaceclr.SBlack(); ;
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "purple")
+            {
+
+                response = $"Change surface zone color on <color=purple> Purple!";
+
+                surfaceclr.SPurple();
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "yellow")
+            {
+
+                response = $"Change surface zone color on <color=yellow> Yellow!";
+
+                surfaceclr.SYellow();
+
+                return true;
+
+            }
+            if (arguments.At(0) == "surface" && arguments.At(1) == "cyan")
+            {
+
+                response = $"Change surface zone color on <color=blue> Cyan!";
+
+                surfaceclr.SCyan();
+
+                return true;
+
+            }
             //--LIGHT CONTAINMENT ZONE--
 
             if (arguments.At(0) == "lcz" && arguments.At(1) == "red")
@@ -366,14 +426,8 @@ namespace FacilityColorLighting
                 return true;
 
             }
-
             response = "Arguments must be correct \n and these should without big letters";
-
             return false;
         }
-
-        
-
-
     }
 }
